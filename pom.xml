@@ -1,17 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.apache.shiro</groupId>
     <artifactId>shiro-faces</artifactId>
     <packaging>jar</packaging>
-    <version>2.0-SNAPSHOT</version>
-    <name>Apache Shiro :: JSF 2 Support</name>
+    <version>2.1-SNAPSHOT</version>
+    <name>Apache Shiro :: JSF 2.x Support</name>
 
     <properties>
-        <shiro.version>1.1.0</shiro.version>
-        <jdk.version>1.5</jdk.version>
+        <shiro.version>1.2.2</shiro.version>
+        <jdk.version>1.6</jdk.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
+
+    <developers>
+        <developer>
+            <id>deluan</id>
+            <name>Deluan Quintão</name>
+            <url>http://techbeats.deluan.com</url>
+            <organization>ThoughtWorks</organization>
+            <timezone>-5</timezone>
+            <roles>
+                <role>Developer</role>
+            </roles>
+        </developer>
+        <developer>
+            <id>jyeary</id>
+            <name>John Yeary</name>
+            <email>jyeary@bluelotussoftware.com</email>
+            <url>http://javaevangelist.blogspot.com</url>
+            <organization>Blue Lotus Software, LLC.</organization>
+            <organizationUrl>http://code.bluelotussoftware.com</organizationUrl>
+            <timezone>-5</timezone>
+            <roles>
+                <role>Developer</role>
+            </roles>
+        </developer>
+        <developer>
+            <name>Jeremy Haile</name>
+            <roles>
+                <role>Developer</role>
+            </roles>
+        </developer>
+        <developer>
+            <name>Les Hazlewood</name>
+            <roles>
+                <role>Developer</role>
+            </roles>
+        </developer>
+    </developers>
+
 
     <dependencies>
         <dependency>
@@ -22,13 +61,19 @@
         <dependency>
             <groupId>com.sun.faces</groupId>
             <artifactId>jsf-api</artifactId>
-            <version>2.0.3</version>
+            <version>2.1.26</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
-          <groupId>javax.el</groupId>
-          <artifactId>el-api</artifactId>
-          <version>1.0</version>
+            <groupId>com.sun.faces</groupId>
+            <artifactId>jsf-impl</artifactId>
+            <version>2.1.26</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.el</groupId>
+            <artifactId>el-api</artifactId>
+            <version>2.2</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
@@ -37,7 +82,7 @@
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.1</version>
+                <version>3.1</version>
                 <configuration>
                     <source>${jdk.version}</source>
                     <target>${jdk.version}</target>
@@ -47,14 +92,14 @@
             </plugin>
             <plugin>
                 <artifactId>maven-resources-plugin</artifactId>
-                <version>2.4.3</version>
+                <version>2.6</version>
                 <configuration>
                     <encoding>UTF-8</encoding>
                 </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-source-plugin</artifactId>
-                <version>2.1.2</version>
+                <version>2.2.1</version>
                 <executions>
                     <execution>
                         <phase>package</phase>
@@ -66,7 +111,7 @@
             </plugin>
             <plugin>
                 <artifactId>maven-javadoc-plugin</artifactId>
-                <version>2.7</version>
+                <version>2.9.1</version>
                 <configuration>
                     <quiet>true</quiet>
                 </configuration>
@@ -103,16 +148,3 @@
         </snapshotRepository>
     </distributionManagement>
 </project>
-
-
-
-
-
-
-
-
-
-
-
-
-
