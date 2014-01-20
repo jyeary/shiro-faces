@@ -8,6 +8,8 @@ import java.beans.Introspector;
 import java.beans.PropertyDescriptor;
 import java.io.IOException;
 import java.lang.reflect.Modifier;
+import java.text.MessageFormat;
+import javax.faces.component.FacesComponent;
 
 /**
  * <p>Tag used to print out the String value of a user's default principal,
@@ -23,7 +25,9 @@ import java.lang.reflect.Modifier;
  *
  * @author Jeremy Haile
  * @author Deluan Quintao
+ * @author John Yeary
  */
+@FacesComponent(value = "org.apache.shiro.web.faces.tags.PrincipalTag")
 public class PrincipalTag extends SecureComponent {
 
     /**
@@ -70,6 +74,7 @@ public class PrincipalTag extends SecureComponent {
     |               M E T H O D S               |
     ============================================*/
     @SuppressWarnings({"unchecked"})
+    @Override
     protected void doEncodeAll(FacesContext ctx) throws IOException {
         String strValue = null;
 
@@ -93,8 +98,8 @@ public class PrincipalTag extends SecureComponent {
                     }
                 }
             }
-        } catch (Exception e) {
-            log.error("Error getting principal type [" + type + "], property [" + property + "]: " + e.getMessage(), e);
+        } catch (IOException e) {
+            log.error(MessageFormat.format("Error getting principal type [{0}], property [{1}]: {2}", type, property, e.getMessage()), e);
         }
 
         if (strValue == null) {
@@ -106,7 +111,7 @@ public class PrincipalTag extends SecureComponent {
             try {
                 ctx.getResponseWriter().write(strValue);
             } catch (IOException e) {
-                throw new IOException("Error writing [" + strValue + "] to output.");
+                throw new IOException(MessageFormat.format("Error writing [{0}] to output.", strValue));
             }
         }
     }
@@ -123,11 +128,11 @@ public class PrincipalTag extends SecureComponent {
             }
         } catch (ClassNotFoundException e) {
             if (log.isErrorEnabled()) {
-                log.error("Unable to find class for name [" + type + "]");
+                log.error(MessageFormat.format("Unable to find class for name [{0}]", type));
             }
         } catch (Exception e) {
             if (log.isErrorEnabled()) {
-                log.error("Unknown error while getting principal for type [" + type + "]: " + e.getMessage(), e);
+                log.error(MessageFormat.format("Unknown error while getting principal for type [{0}]: {1}", type, e.getMessage()), e);
             }
         }
         return principal;
@@ -157,7 +162,7 @@ public class PrincipalTag extends SecureComponent {
             }
 
             if (!foundProperty) {
-                final String message = "Property [" + property + "] not found in principal of type [" + principal.getClass().getName() + "]";
+                final String message = new StringBuilder().append("Property [").append(property).append("] not found in principal of type [").append(principal.getClass().getName()).append("]").toString();
                 if (log.isErrorEnabled()) {
                     log.error(message);
                 }
@@ -165,7 +170,7 @@ public class PrincipalTag extends SecureComponent {
             }
 
         } catch (Exception e) {
-            final String message = "Error reading property [" + property + "] from principal of type [" + principal.getClass().getName() + "]";
+            final String message = new StringBuilder().append("Error reading property [").append(property).append("] from principal of type [").append(principal.getClass().getName()).append("]").toString();
             if (log.isErrorEnabled()) {
                 log.error(message, e);
             }

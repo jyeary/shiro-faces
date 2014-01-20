@@ -4,13 +4,12 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import javax.faces.view.facelets.TagConfig;
 import javax.faces.view.facelets.TagHandler;
 
 /**
  * Base class for all TagHandlers
- * 
+ *
  * @author Deluan Quintao
  */
 public abstract class SecureTagHandler extends TagHandler {

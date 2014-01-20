@@ -1,12 +1,12 @@
 package org.apache.shiro.web.faces.tags;
 
 import org.apache.shiro.subject.Subject;
-
 import javax.faces.view.facelets.TagConfig;
 
 /**
- * Tag that renders the tag body only if the current user has <em>at least one</em> of the comma-delimited
- * string permissions specified in <tt>name</tt> attribute.
+ * Tag that renders the tag body only if the current user has <em>at least
+ * one</em> of the comma-delimited string permissions specified in <tt>name</tt>
+ * attribute.
  *
  * @author Deluan
  */
@@ -18,6 +18,7 @@ public class HasAnyPermissionTag extends PermissionTagHandler {
         super(config);
     }
 
+    @Override
     protected boolean showTagBody(String permissions) {
         boolean hasAnyPermission = false;
 

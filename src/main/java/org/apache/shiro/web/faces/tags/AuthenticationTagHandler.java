@@ -18,6 +18,7 @@ public abstract class AuthenticationTagHandler extends SecureTagHandler {
         super(config);
     }
 
+    @Override
     public void apply(FaceletContext ctx, UIComponent parent) throws IOException, FacesException, ELException {
         if (showTagBody()) {
             this.nextHandler.apply(ctx, parent);
@@ -29,12 +30,12 @@ public abstract class AuthenticationTagHandler extends SecureTagHandler {
     protected boolean showTagBody() {
         if (checkAuthentication()) {
             if (log.isTraceEnabled()) {
-                log.trace("Authentication successfully verified.  " + "Tag body will be evaluated.");
+                log.trace("Authentication successfully verified. Tag body will be evaluated.");
             }
             return true;
         } else {
             if (log.isTraceEnabled()) {
-                log.trace("Authentication verification failed.  " + "Tag body will not be evaluated.");
+                log.trace("Authentication verification failed. Tag body will not be evaluated.");
             }
             return false;
         }

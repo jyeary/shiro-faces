@@ -8,7 +8,6 @@ import javax.faces.view.facelets.TagConfig;
 public class HasRoleTag extends PermissionTagHandler {
 
     // TODO - complete JavaDoc
-
     public HasRoleTag(TagConfig config) {
         super(config);
     }

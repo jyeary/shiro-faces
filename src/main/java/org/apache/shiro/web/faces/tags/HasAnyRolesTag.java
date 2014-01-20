@@ -1,9 +1,7 @@
 package org.apache.shiro.web.faces.tags;
 
 import org.apache.shiro.subject.Subject;
-
 import javax.faces.view.facelets.TagConfig;
-
 
 /**
  * Displays body content if the current user has any of the roles specified.
@@ -14,7 +12,6 @@ import javax.faces.view.facelets.TagConfig;
 public class HasAnyRolesTag extends PermissionTagHandler {
 
     //TODO - complete JavaDoc
-
     // Delimeter that separates role names in tag attribute
     private static final String ROLE_NAMES_DELIMETER = ",";
 
@@ -22,6 +19,7 @@ public class HasAnyRolesTag extends PermissionTagHandler {
         super(config);
     }
 
+    @Override
     protected boolean showTagBody(String roleNames) {
         boolean hasAnyRole = false;
 
